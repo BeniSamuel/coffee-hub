@@ -19,7 +19,10 @@ const Categories = () => {
     <View style={styles.container}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {categories.map((category) => (
-          <TouchableOpacity key={category} style={styles.category_text_container}>
+          <TouchableOpacity
+            key={category}
+            style={styles.category_text_container}
+          >
             <Text
               onPress={() => {
                 setSection(category);
@@ -31,7 +34,11 @@ const Categories = () => {
             >
               {category}
             </Text>
-            { section === category ? (<View style={styles.active_section_indicator}/>) : (<></>)}
+            {section === category ? (
+              <View style={styles.active_section_indicator} />
+            ) : (
+              <></>
+            )}
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -50,15 +57,15 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    paddingRight: screenwidth * 0.055
+    paddingRight: screenwidth * 0.055,
   },
   category_text: {
-    fontFamily: "poppins-medium"
+    fontFamily: "poppins-medium",
   },
   active_section_indicator: {
     backgroundColor: "#D17842",
     width: 12,
     height: 12,
-    borderRadius: screenwidth
-  }
+    borderRadius: screenwidth,
+  },
 });
