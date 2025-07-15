@@ -2,6 +2,8 @@ import { Dimensions, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import TabLayout from "../../../layout/TabLayout";
 import Search from "../../../components/home/search/Search";
+import Categories from "../../../components/home/card/categories/Categories";
+import CoffeeWithMilk from "../../../components/home/card/coffee-card/CoffeeWithMilk";
 
 const screenwidth = Dimensions.get("window").width;
 const screenheight = Dimensions.get("window").height;
@@ -15,6 +17,10 @@ const Home = () => {
       </View>
       <View>
         <Search />
+      </View>
+      <View>
+        <Categories />
+        <CoffeeWithMilk />
       </View>
     </TabLayout>
   );
