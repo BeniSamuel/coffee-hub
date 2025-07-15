@@ -11,6 +11,7 @@ const Search = () => {
       <TextInput
         keyboardType="web-search"
         placeholder="Find your coffee..."
+        placeholderTextColor={"#52555A"}
         style={styles.input_search}
         onChangeText={(newText) => {
           setSearch(newText);
