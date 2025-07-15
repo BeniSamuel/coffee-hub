@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Coffee Hub",
+    "slug": "coffee-hub",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/splash/splash-logo.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash/splash-logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0C0F14"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/splash/splash-logo.png",
+        "backgroundColor": "#0C0F14"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/splash/splash-logo.png"
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
