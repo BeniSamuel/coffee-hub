@@ -6,15 +6,22 @@ import {
   View,
 } from "react-native";
 import React from "react";
+import coffee from "../../types/coffee.type";
+import { add_to_cart } from "../../services/cart/cart.service";
 
 const screenwidth = Dimensions.get("window").width;
 const screenheight = Dimensions.get("window").height;
 
 type PriceTagProp = {
   price: number;
+  product: coffee;
 };
 
-const PriceTag: React.FC<PriceTagProp> = ({ price }) => {
+const add_to_cart_function = (product: coffee) => {
+  add_to_cart(product);
+};
+
+const PriceTag: React.FC<PriceTagProp> = ({ price, product }) => {
   return (
     <View style={styles.container}>
       <View style={styles.price_container}>
@@ -24,7 +31,12 @@ const PriceTag: React.FC<PriceTagProp> = ({ price }) => {
           <Text style={styles.price_value}>{price}</Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.add_cart_button}>
+      <TouchableOpacity
+        style={styles.add_cart_button}
+        onPress={() => {
+          add_to_cart_function(product);
+        }}
+      >
         <Text style={styles.cart_text}>Add to Cart</Text>
       </TouchableOpacity>
     </View>
@@ -44,25 +56,25 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     gap: 8,
-    alignItems: "center"
+    alignItems: "center",
   },
   price_description_container: {
     display: "flex",
     flexDirection: "column",
-    gap: 2
+    gap: 2,
   },
   price_mark: {
     fontFamily: "poppins-bold",
     color: "#D17842",
-    fontSize: 25
+    fontSize: 25,
   },
   price_indicator: {
     fontFamily: "poppins-medium",
-    color: "#AEAEAE"
+    color: "#AEAEAE",
   },
   price_value: {
     fontFamily: "poppins-medium",
-    color: "white"
+    color: "white",
   },
   add_cart_button: {
     backgroundColor: "#D17842",
@@ -72,10 +84,10 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   cart_text: {
     fontFamily: "poppins-regular",
-    color: "white"
-  }
+    color: "white",
+  },
 });
