@@ -1,6 +1,8 @@
+import { ImageSourcePropType } from "react-native";
+
 type coffee = {
     id: number;
-    image: string;
+    image: ImageSourcePropType;
     name: string;
     origin: string;
     made_of: string;
