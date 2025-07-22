@@ -10,9 +10,15 @@ import React from "react";
 import { cart } from "../../data/cart/cart.data";
 import CartCard from "./CartCard";
 import coffee from "../../types/coffee.type";
+import CartPrice from "./CartPrice";
 
 const screenwidth = Dimensions.get("window").width;
 const screenheight = Dimensions.get("window").height;
+
+let sum = 0;
+for (let i = 0; i < cart.length; i++) {
+  sum = sum + cart[i].price;
+}
 
 const CartsData: React.FC = () => {
   return (
@@ -35,6 +41,7 @@ const CartsData: React.FC = () => {
               }}
             />
           ))}
+          <CartPrice total={sum} />
         </View>
       ) : (
         <View

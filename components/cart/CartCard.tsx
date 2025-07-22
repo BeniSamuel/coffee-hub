@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import coffee from "../../types/coffee.type";
 
 type CartCardProps = {
@@ -17,6 +17,16 @@ const screenwidth = Dimensions.get("window").width;
 const screenheight = Dimensions.get("window").height;
 
 const CartCard: React.FC<CartCardProps> = ({ product }) => {
+  const [count, setCount] = useState(1);
+
+  const handle_reduce_count = () => {
+    if (count !== 0) {
+      setCount(count - 1);
+    } else {
+      setCount(0);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -48,13 +58,21 @@ const CartCard: React.FC<CartCardProps> = ({ product }) => {
           </View>
         </View>
         <View style={styles.quantity_container}>
-          <TouchableOpacity style={styles.counter_button}>
+          <TouchableOpacity
+            style={styles.counter_button}
+            onPress={handle_reduce_count}
+          >
             <Text style={styles.counter_text}>-</Text>
           </TouchableOpacity>
           <View>
-            <Text style={styles.counter_text}>{1}</Text>
+            <Text style={styles.counter_text}>{count}</Text>
           </View>
-          <TouchableOpacity style={styles.counter_button}>
+          <TouchableOpacity
+            style={styles.counter_button}
+            onPress={() => {
+              setCount(count + 1);
+            }}
+          >
             <Text style={styles.counter_text}>+</Text>
           </TouchableOpacity>
         </View>
