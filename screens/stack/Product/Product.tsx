@@ -56,7 +56,7 @@ const Product = ({ route }) => {
           </View>
 
           <View>
-            <PriceTag price={product.price} />
+            <PriceTag price={product.price} product={product}/>
           </View>
         </View>
       </ScrollView>
