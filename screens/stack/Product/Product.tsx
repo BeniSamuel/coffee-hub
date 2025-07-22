@@ -13,51 +13,37 @@ import coffee from "../../../types/coffee.type";
 import { StatusBar } from "expo-status-bar";
 import Size from "../../../components/product/Size";
 import PriceTag from "../../../components/product/PriceTag";
+import { RouteProp } from "@react-navigation/native";
 
 const screenwidth = Dimensions.get("window").width;
-const screenheight = Dimensions.get("window").height;
 
-const Product = ({ route }) => {
+type RootStackParamList = {
+  Product: {
+    product: coffee;
+  };
+};
+
+type ProductScreenRouteProp = RouteProp<RootStackParamList, "Product">;
+
+type Props = {
+  route: ProductScreenRouteProp;
+};
+
+const Product: React.FC<Props> = ({ route }) => {
   const { product } = route.params;
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
-      <ProductImage
-        product={{
-          id: product.id,
-          image: product.image,
-          name: product.name,
-          origin: product.origin,
-          made_of: product.made_of,
-          rating: product.rating,
-          description: product.description,
-          size: product.size,
-          price: product.price,
-        }}
-      />
+      <ProductImage product={product} />
       <ScrollView>
-        <View
-          style={{
-            flex: 1,
-            width: screenwidth,
-            paddingHorizontal: screenwidth * 0.06,
-            paddingVertical: 10,
-            flexDirection: "column",
-            gap: 12,
-          }}
-        >
-          <View style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+        <View style={styles.content}>
+          <View style={{ gap: 5 }}>
             <Text style={styles.description_text_heading}>Description</Text>
             <Text style={styles.description_text}>{product.description}</Text>
           </View>
 
-          <View>
-            <Size size={product.size} />
-          </View>
-
-          <View>
-            <PriceTag price={product.price} product={product}/>
-          </View>
+          <Size size={product.size} />
+          <PriceTag price={product.price} product={product} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -71,6 +57,14 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS !== "ios" ? 35 : 25,
     backgroundColor: "#0C0F14",
     flex: 1,
+  },
+  content: {
+    flex: 1,
+    width: screenwidth,
+    paddingHorizontal: screenwidth * 0.06,
+    paddingVertical: 10,
+    flexDirection: "column",
+    gap: 12,
   },
   description_text_heading: {
     color: "#AEAEAE",
